@@ -2,11 +2,12 @@ package com.todo.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.io.Serializable;
 
 @Entity
 @Data
 @Table(name="task")
-public class Task {
+public class Task implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -3,7 +3,7 @@ package com.todo.backend.service;
 import com.todo.backend.entity.Task;
 
 import java.util.List;
-
+import java.util.UUID;
 
 
 public interface TaskService {
@@ -14,7 +14,7 @@ public interface TaskService {
 
     Task updateTask(Task task);
 
-    void deleteTask(Long id);
+    void deleteTask(UUID id);
 
 }
 

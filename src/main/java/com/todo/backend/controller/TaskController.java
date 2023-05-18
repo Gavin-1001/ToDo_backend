@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/task")
+@CrossOrigin(origins = "*")
 public class TaskController {
 
     @Autowired
@@ -40,7 +42,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/deleteTask/{id}")
-    public ResponseEntity<?> deleteTask(@PathVariable("id") Long id){
+    public ResponseEntity<?> deleteTask(@PathVariable("id") UUID id){
         taskService.deleteTask(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

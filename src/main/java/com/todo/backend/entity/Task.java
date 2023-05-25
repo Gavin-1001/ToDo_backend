@@ -1,15 +1,18 @@
 package com.todo.backend.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
-import org.hibernate.annotations.JdbcTypeCode;
-
-import org.hibernate.type.SqlTypes;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
+
+import java.sql.Types;
+import java.util.Date;
 import java.util.UUID;
+
+import static java.sql.Types.*;
 
 @Entity
 @Data
@@ -22,7 +25,6 @@ public class Task implements Serializable {
 
     @Id
     @GeneratedValue
-    @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID id;
 
 
@@ -32,9 +34,13 @@ public class Task implements Serializable {
     @Column(name="text")
     private String text;
 
-    @Column(name="date")
+    @Column(name="date_completed")
     private String date;
 
     @Column(name="reminder")
     private boolean reminder;
+
+    @CreationTimestamp
+    @Column(name="date_created")
+    private Date dateCreated;
 }

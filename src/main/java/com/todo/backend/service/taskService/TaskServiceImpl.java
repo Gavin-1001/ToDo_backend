@@ -1,11 +1,10 @@
-package com.todo.backend.service;
+package com.todo.backend.service.taskService;
 
 import com.todo.backend.entity.Task;
 import com.todo.backend.repository.TaskRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,7 +35,7 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
-    public void deleteTask(UUID id) {
+    public void deleteTask(String id) {
         taskRepo.deleteTaskById(id);
     }
 }

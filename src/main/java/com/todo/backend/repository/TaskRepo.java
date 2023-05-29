@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 
 @Repository
-public interface TaskRepo extends JpaRepository<Task, UUID> {
+public interface TaskRepo extends JpaRepository<Task, String> {
 
     @Modifying
     @Transactional //these two annotations are needed to delete from the database otherwise an EntityManager error will occur
-    void deleteTaskById(UUID id);
+    void deleteTaskById(String id);
 
 }

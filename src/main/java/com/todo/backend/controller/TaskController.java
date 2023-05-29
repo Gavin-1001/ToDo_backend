@@ -1,7 +1,7 @@
 package com.todo.backend.controller;
 
 import com.todo.backend.entity.Task;
-import com.todo.backend.service.TaskService;
+import com.todo.backend.service.taskService.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/task")
-@CrossOrigin(origins = "*")
+@CrossOrigin()
 public class TaskController {
 
     @Autowired
@@ -42,11 +42,9 @@ public class TaskController {
     }
 
     @DeleteMapping("/deleteTask/{id}")
-    public ResponseEntity<?> deleteTask(@PathVariable("id") UUID id){
+    public ResponseEntity<?> deleteTask(@PathVariable("id") String id){
         taskService.deleteTask(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 
 }

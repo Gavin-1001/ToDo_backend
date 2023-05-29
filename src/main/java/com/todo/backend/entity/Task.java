@@ -1,9 +1,12 @@
 package com.todo.backend.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
@@ -19,13 +22,12 @@ import static java.sql.Types.*;
 @Table(name="task")
 public class Task implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
-
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Column(name = "id", unique = true)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //removes the property from the response, can write only
+    private String id;
 
 
     @Column(name="title")

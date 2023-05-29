@@ -1,4 +1,4 @@
-package com.todo.backend.service;
+package com.todo.backend.service.taskService;
 
 import com.todo.backend.entity.Task;
 
@@ -14,7 +14,7 @@ public interface TaskService {
 
     Task updateTask(Task task);
 
-    void deleteTask(UUID id);
+    void deleteTask(String id);
 
 }
 
